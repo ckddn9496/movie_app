@@ -1,13 +1,5 @@
 import React from 'react';
 
-function Food({name, image}) {
-  return <div>
-    <h2>I like {name}</h2>
-    <img src={image}/>
-    </div>
-  
-}
-
 const foodsILike = [
   {
     name: "Kimchi",
@@ -36,10 +28,23 @@ const foodsILike = [
   }
 ];
 
+function renderFood(food, index) {
+  return <Food name={food.name} image={food.image} key={index}/>
+}
+
+
+function Food({name, image}) {
+  return <div>
+    <h2>I like {name}</h2>
+    <img src={image}/>
+    </div>
+  
+}
+
 function App() {
   return (
     <div>
-      {foodsILike.map((food, index) => <Food name={food.name} image={food.image} key={index}/>)}
+      {foodsILike.map(renderFood)}
     </div>
   );
 }
